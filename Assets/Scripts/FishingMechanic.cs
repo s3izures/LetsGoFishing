@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FishingWait : MonoBehaviour
+public class FishingMechanic : MonoBehaviour
 {
     bool firstChange = true;
     bool waitingForFish = false;
     bool fishNibbled = false;
+
     [SerializeField] int secondsBetweenBobbing = 3;
     [SerializeField] int reactionTime = 1;
 
@@ -24,26 +25,29 @@ public class FishingWait : MonoBehaviour
             waitingForFish = true;
             firstChange = false;
 
-            if (waitingForFish)
-            {
-                WaitingForFish();
-            }
-            else if (fishNibbled)
-            {
-                GrabFish();
-            }
+            WaitingForFish();
+        }
+
+        //Check for tap when fish nibbled
+        if (fishNibbled && Input.GetKeyDown(KeyCode.Space))
+        {
+            Debug.Log("You caught the fishie"); //implement reeling later
+            ResetEverything();
+        }
+        else if (!fishNibbled && Input.GetKeyDown(KeyCode.Space))
+        {
+            Debug.Log("You reeled in too early");
+            ResetEverything();
         }
     }
 
     void WaitingForFish()
     {
-        //Generate fish
+        //Generate fish HERE
         Debug.Log("Fish lookin time");
 
-        //Waiting for fish time
+        //Bobbing blub blub
         StartCoroutine(WaitingForFishTime());
-
-        //Fish catch time = tap at the right moment
     }
 
     IEnumerator WaitingForFishTime()
@@ -75,26 +79,38 @@ public class FishingWait : MonoBehaviour
             Debug.Log("NYOM");
             waitingForFish = false;
             fishNibbled = true;
-            StopCoroutine(WaitingForFishTime());
         }
 
         if (waitingForFish)
         {
-            WaitingForFishTime();
+            StartCoroutine(WaitingForFishTime());
+        }
+        else if (fishNibbled)
+        {
+            StartCoroutine(GrabFish());
         }
     }
 
     IEnumerator GrabFish()
     {
-        //Check for tap
-
-
         //Give reaction time
         yield return new WaitForSeconds(reactionTime);
 
+        if (fishNibbled)
+        {
+            //If player doesn't tap in time
+            Debug.Log("Fish Got Away, boohoo");
+            ResetEverything();
+        }
+    }
 
-        //If Player doesn't tap in time
-        Debug.Log("Fish Got Away, boohoo");
-        firstChange = false; //Reset
+    void ResetEverything()
+    {
+        firstChange = true;
+        waitingForFish = false;
+        fishNibbled = false;
+
+        StopAllCoroutines();
+        GameState.Instance.SetState((int)GameState.State.GameIdle);
     }
 }
