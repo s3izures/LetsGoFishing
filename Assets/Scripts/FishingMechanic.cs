@@ -1,44 +1,57 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class FishingMechanic : MonoBehaviour
 {
+    [Header("Fishing Mechanic - stage 1")]
     bool firstChange = true;
     bool waitingForFish = false;
     bool fishNibbled = false;
-
     [SerializeField] int secondsBetweenBobbing = 3;
     [SerializeField] int reactionTime = 1;
 
-    private void Start()
+    void Update()
     {
+        if (GameState.Instance.GetState() == GameState.State.GameFishing)
+        {
+            if (firstChange) //trigger once
+            {
+                firstChange = false;
+                waitingForFish = true;
+
+                WaitingForFish();
+            }
+
+            //Check for tap when fish nibbled
+            if (GestureManager.Instance.OnTap())
+            {
+                if (fishNibbled)
+                {
+                    //Get fish
+                    GameManager.Instance.ModifyFish(1);
+                    Debug.Log("Wawa fish");
+                    ResetEverything();
+                }
+                else if (waitingForFish)
+                {
+                    Debug.Log("You reeled in too early");
+                    ResetEverything();
+                }
+            }
+        }
+    }
+
+    void ResetEverything()
+    {
+        StopAllCoroutines();
+        GameState.Instance.SetState((int)GameState.State.GameIdle);
+
         firstChange = true;
         waitingForFish = false;
         fishNibbled = false;
-    }
 
-    void Update()
-    {
-        if (firstChange && GameState.Instance.GetState() == GameState.State.GameFishing)
-        {
-            waitingForFish = true;
-            firstChange = false;
-
-            WaitingForFish();
-        }
-
-        //Check for tap when fish nibbled
-        if (fishNibbled && Input.GetKeyDown(KeyCode.Space))
-        {
-            Debug.Log("You caught the fishie"); //implement reeling later
-            ResetEverything();
-        }
-        else if (!fishNibbled && Input.GetKeyDown(KeyCode.Space))
-        {
-            Debug.Log("You reeled in too early");
-            ResetEverything();
-        }
+        UIManager.Instance.ShowAllPonds();
     }
 
     void WaitingForFish()
@@ -87,6 +100,7 @@ public class FishingMechanic : MonoBehaviour
         }
         else if (fishNibbled)
         {
+            waitingForFish = false;
             StartCoroutine(GrabFish());
         }
     }
@@ -104,13 +118,4 @@ public class FishingMechanic : MonoBehaviour
         }
     }
 
-    void ResetEverything()
-    {
-        firstChange = true;
-        waitingForFish = false;
-        fishNibbled = false;
-
-        StopAllCoroutines();
-        GameState.Instance.SetState((int)GameState.State.GameIdle);
-    }
 }

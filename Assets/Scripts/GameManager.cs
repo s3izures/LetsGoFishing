@@ -5,6 +5,8 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
+    int fishCollected = 0;
+
     private void Awake()
     {
         if (Instance == null)
@@ -23,8 +25,12 @@ public class GameManager : MonoBehaviour
         GameState.Instance.SetState(1); //temp since we have no main menu
     }
 
-    void Update()
+    public void ModifyFish(int amt)
     {
-        
+        fishCollected += amt;
+    }
+    public int GetFish()
+    {
+        return fishCollected;
     }
 }
