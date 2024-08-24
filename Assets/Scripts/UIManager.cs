@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -28,6 +27,8 @@ public class UIManager : MonoBehaviour
 
     public void ShowOnlyThisPond(int index)
     {
+        GameManager.Instance.SetActivePond(index);
+
         for (int i = 0; i < ponds.Count; i++)
         {
             if (i != index)
@@ -44,6 +45,8 @@ public class UIManager : MonoBehaviour
     }
     public void ShowAllPonds()
     {
+        GameManager.Instance.SetActivePond(-1);
+
         for (int i = 0; i < ponds.Count; i++)
         {
             ponds[i].interactable = true;

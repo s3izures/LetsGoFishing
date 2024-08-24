@@ -1,6 +1,5 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class FishingMechanic : MonoBehaviour
 {
@@ -9,7 +8,7 @@ public class FishingMechanic : MonoBehaviour
     bool waitingForFish = false;
     bool fishNibbled = false;
     [SerializeField] int secondsBetweenBobbing = 3;
-    [SerializeField] int reactionTime = 1;
+    float reactionTime = 3;
 
     void Update()
     {
@@ -29,7 +28,7 @@ public class FishingMechanic : MonoBehaviour
                 if (fishNibbled)
                 {
                     //Get fish
-                    GameManager.Instance.ModifyFish(1);
+                    GameManager.Instance.AddFish();
                     Debug.Log("Wawa fish");
                     ResetEverything();
                 }
@@ -50,13 +49,15 @@ public class FishingMechanic : MonoBehaviour
         firstChange = true;
         waitingForFish = false;
         fishNibbled = false;
+        GameManager.Instance.SwitchRippleAnim(GameManager.Instance.GetActivePond(), (int)GameManager.BobberState.Nothing);
 
         UIManager.Instance.ShowAllPonds();
     }
 
     void WaitingForFish()
     {
-        //Generate fish HERE
+        GameManager.Instance.GetWhichFishType();
+        reactionTime = GameManager.Instance.GetReactionTime();
         Debug.Log("Fish lookin time");
 
         //Bobbing blub blub
@@ -67,32 +68,33 @@ public class FishingMechanic : MonoBehaviour
     {
         yield return new WaitForSeconds(secondsBetweenBobbing);
 
-        int catchChance = Random.Range(0, 10);
-        /* CATCH PERCENTAGES:
-         * 0-1 = nothing
-         * 2-4 = bobber moves
-         * 5-7 = bobber moves wildly
-         * 8-10 = fish takes bait
-         */
+        float catchChance = Random.Range(0f, 100f);
+        int animState = 0;
 
-        if (catchChance <= 1)
+        if (catchChance <= GameManager.Instance.GetBobberState(GameManager.BobberState.Nothing))
         {
+            animState = (int)GameManager.BobberState.Nothing;
             Debug.Log("Nothing");
         }
-        else if (catchChance <= 4) //Bobber moves
+        else if (catchChance <= GameManager.Instance.GetBobberState(GameManager.BobberState.Small)) //Bobber moves
         {
+            animState = (int)GameManager.BobberState.Small;
             Debug.Log("Blub");
         }
-        else if (catchChance <= 7) //Bobber moves wildly
+        else if (catchChance <= GameManager.Instance.GetBobberState(GameManager.BobberState.Big)) //Bobber moves wildly
         {
+            animState = (int)GameManager.BobberState.Big;
             Debug.Log("BLUB BLUB BLUB");
         }
-        else if (catchChance <= 10) //Fish takes bait
+        else if (catchChance <= GameManager.Instance.GetBobberState(GameManager.BobberState.Catch)) //Fish takes bait
         {
+            animState = (int)GameManager.BobberState.Catch;
             Debug.Log("NYOM");
             waitingForFish = false;
             fishNibbled = true;
         }
+
+        GameManager.Instance.SwitchRippleAnim(GameManager.Instance.GetActivePond(), animState);
 
         if (waitingForFish)
         {

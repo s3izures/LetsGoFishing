@@ -24,8 +24,7 @@ public class GameState : MonoBehaviour
     {
         MainMenu = 0,
         GameIdle = 1,
-        GameFishing = 2,
-        GameReeling = 3
+        GameFishing = 2
     }
     public State GetState()
     {
@@ -36,16 +35,4 @@ public class GameState : MonoBehaviour
         state = (State)setState;
     }
 
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

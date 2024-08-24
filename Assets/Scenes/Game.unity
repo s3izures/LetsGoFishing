@@ -675,7 +675,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.28132787, g: 0.33692938, b: 0.5471698, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -904,30 +904,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_IntArgument
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 9152849380334177091, guid: 8ccee4726b54c7a42851328215f5ed2c, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 88867770d04a37f418a42f4669149b73, type: 3}
-    - target: {fileID: 9152849380334177091, guid: 8ccee4726b54c7a42851328215f5ed2c, type: 3}
-      propertyPath: m_Color.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9152849380334177091, guid: 8ccee4726b54c7a42851328215f5ed2c, type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9152849380334177091, guid: 8ccee4726b54c7a42851328215f5ed2c, type: 3}
-      propertyPath: m_Color.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9152849380334177091, guid: 8ccee4726b54c7a42851328215f5ed2c, type: 3}
-      propertyPath: m_Color.r
-      value: 0.488163
-      objectReference: {fileID: 0}
-    - target: {fileID: 9152849380334177091, guid: 8ccee4726b54c7a42851328215f5ed2c, type: 3}
-      propertyPath: m_PreserveAspect
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1011,6 +987,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1209f251c79f45a4cb8c0aea0943df3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fishes:
+  - {fileID: 11400000, guid: c8ebbf15b87533c429c1c029d5e551db, type: 2}
+  rippleAnim:
+  - {fileID: 377918165929419006}
+  - {fileID: 1648048047}
+  - {fileID: 1914684564}
+  - {fileID: 1490188783}
 --- !u!4 &839565747
 Transform:
   m_ObjectHideFlags: 0
@@ -1116,7 +1099,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   secondsBetweenBobbing: 3
-  reactionTime: 3
 --- !u!1001 &1420448253
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1229,26 +1211,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_IntArgument
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 9152849380334177091, guid: 8ccee4726b54c7a42851328215f5ed2c, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 88867770d04a37f418a42f4669149b73, type: 3}
-    - target: {fileID: 9152849380334177091, guid: 8ccee4726b54c7a42851328215f5ed2c, type: 3}
-      propertyPath: m_Color.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9152849380334177091, guid: 8ccee4726b54c7a42851328215f5ed2c, type: 3}
-      propertyPath: m_Color.b
-      value: 0.288177
-      objectReference: {fileID: 0}
-    - target: {fileID: 9152849380334177091, guid: 8ccee4726b54c7a42851328215f5ed2c, type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9152849380334177091, guid: 8ccee4726b54c7a42851328215f5ed2c, type: 3}
-      propertyPath: m_Color.r
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1263,6 +1225,11 @@ RectTransform:
 CanvasGroup:
   m_CorrespondingSourceObject: {fileID: 4753122001814857510, guid: 8ccee4726b54c7a42851328215f5ed2c, type: 3}
   m_PrefabInstance: {fileID: 1420448253}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1490188783 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5088714371333089163, guid: 8ccee4726b54c7a42851328215f5ed2c, type: 3}
+  m_PrefabInstance: {fileID: 522704300}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1502900494
 GameObject:
@@ -1299,7 +1266,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 200, y: 0}
+  m_SizeDelta: {x: 300, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1502900496
 MonoBehaviour:
@@ -1339,6 +1306,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1502900494}
   m_CullTransparentMesh: 1
+--- !u!95 &1648048047 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5088714371333089163, guid: 8ccee4726b54c7a42851328215f5ed2c, type: 3}
+  m_PrefabInstance: {fileID: 1420448253}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1774642301
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1447,22 +1419,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
       value: ShowOnlyThisPond
       objectReference: {fileID: 0}
-    - target: {fileID: 9152849380334177091, guid: 8ccee4726b54c7a42851328215f5ed2c, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 88867770d04a37f418a42f4669149b73, type: 3}
-    - target: {fileID: 9152849380334177091, guid: 8ccee4726b54c7a42851328215f5ed2c, type: 3}
-      propertyPath: m_Color.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9152849380334177091, guid: 8ccee4726b54c7a42851328215f5ed2c, type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9152849380334177091, guid: 8ccee4726b54c7a42851328215f5ed2c, type: 3}
-      propertyPath: m_Color.r
-      value: 0.92933357
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1476,6 +1432,11 @@ RectTransform:
 --- !u!225 &1774642303 stripped
 CanvasGroup:
   m_CorrespondingSourceObject: {fileID: 4753122001814857510, guid: 8ccee4726b54c7a42851328215f5ed2c, type: 3}
+  m_PrefabInstance: {fileID: 1774642301}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1914684564 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5088714371333089163, guid: 8ccee4726b54c7a42851328215f5ed2c, type: 3}
   m_PrefabInstance: {fileID: 1774642301}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1983695528
@@ -1714,6 +1675,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6554856839613429456, guid: 8ccee4726b54c7a42851328215f5ed2c, type: 3}
+      propertyPath: m_Transition
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6554856839613429456, guid: 8ccee4726b54c7a42851328215f5ed2c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 839565748}
@@ -1729,14 +1694,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_IntArgument
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 9152849380334177091, guid: 8ccee4726b54c7a42851328215f5ed2c, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 88867770d04a37f418a42f4669149b73, type: 3}
-    - target: {fileID: 9152849380334177091, guid: 8ccee4726b54c7a42851328215f5ed2c, type: 3}
-      propertyPath: m_Color.a
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1745,6 +1702,11 @@ PrefabInstance:
 --- !u!225 &377918165929419002 stripped
 CanvasGroup:
   m_CorrespondingSourceObject: {fileID: 4753122001814857510, guid: 8ccee4726b54c7a42851328215f5ed2c, type: 3}
+  m_PrefabInstance: {fileID: 377918165929419001}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &377918165929419006 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5088714371333089163, guid: 8ccee4726b54c7a42851328215f5ed2c, type: 3}
   m_PrefabInstance: {fileID: 377918165929419001}
   m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
