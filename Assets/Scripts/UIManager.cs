@@ -7,10 +7,12 @@ public class UIManager : MonoBehaviour
     public static UIManager Instance;
     [SerializeField] List<CanvasGroup> ponds;
     [SerializeField] TextMeshProUGUI fishAmt;
+    [SerializeField] TextMeshProUGUI fishCaught;
+    [SerializeField] float alphaPond = 0.1f;
 
     private void Update()
     {
-        fishAmt.text = GameManager.Instance.GetFish().ToString();
+        fishAmt.text = GameManager.Instance.GetFishAmount().ToString();
     }
 
     private void Awake()
@@ -34,7 +36,7 @@ public class UIManager : MonoBehaviour
             if (i != index)
             {
                 ponds[i].interactable = false;
-                ponds[i].alpha = 0.5f;
+                ponds[i].alpha = alphaPond;
             }
             else
             {
@@ -52,5 +54,9 @@ public class UIManager : MonoBehaviour
             ponds[i].interactable = true;
             ponds[i].alpha = 1;
         }
+    }
+    public void ShowCaughtFish()
+    {
+        fishCaught.text = ("You Caught " + GameManager.Instance.GetFishObject(-1).fishName);
     }
 }

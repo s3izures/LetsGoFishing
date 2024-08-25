@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e812d278a563d39408974b2917971fb3
+guid: 66aa74a2a326f4c4ab3db2145e5be06e
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,7 +110,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Ripple Small-Sheet_0
+      name: Water WooWoo_0
       rect:
         serializedVersion: 2
         x: 0
@@ -124,14 +124,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8ae096e18ece87243b075e54b74b8aa5
-      internalID: -811094324
+      spriteID: db3b8ca7eb0f81e428e470e434efd86d
+      internalID: -454363674
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ripple Small-Sheet_1
+      name: Water WooWoo_1
       rect:
         serializedVersion: 2
         x: 64
@@ -145,14 +145,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 92542b72050d08342b70e5dcefab07f5
-      internalID: 820226025
+      spriteID: 4939010044cbc5a43b2f2c0186ad37a3
+      internalID: 201468735
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ripple Small-Sheet_2
+      name: Water WooWoo_2
       rect:
         serializedVersion: 2
         x: 128
@@ -166,8 +166,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9c9781efc53df3f46892654d1f847891
-      internalID: 1556857030
+      spriteID: f8b5e9112cea06e4bb4a7997de75f740
+      internalID: 475283795
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Water WooWoo_3
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 711bebe9c80502b41b0427a449b27619
+      internalID: -1100194090
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Water WooWoo_4
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74ad10cbe6b3af24dadd6b9b59904d5f
+      internalID: -1073667143
       vertices: []
       indices: 
       edges: []
@@ -183,9 +225,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Ripple Small-Sheet_0: -811094324
-      Ripple Small-Sheet_1: 820226025
-      Ripple Small-Sheet_2: 1556857030
+      Water WooWoo_0: -454363674
+      Water WooWoo_1: 201468735
+      Water WooWoo_2: 475283795
+      Water WooWoo_3: -1100194090
+      Water WooWoo_4: -1073667143
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

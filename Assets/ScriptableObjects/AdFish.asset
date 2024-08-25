@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 64efcebcae2071e43832ad2f7399588c, type: 3}
-  m_Name: BasicFish
+  m_Name: AdFish
   m_EditorClassIdentifier: 
-  fishName: Normal Fish
-  fishValue: 1
+  fishName: TV Fish
+  fishValue: 2
   bobberChance:
-  - 10
   - 30
   - 40
-  - 50
-  reactionTime: 5
-  isAd: 0
+  - 60
+  - 80
+  reactionTime: 3
+  isAd: 1

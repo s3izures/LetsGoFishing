@@ -11,6 +11,13 @@ public class GameManager : MonoBehaviour
     int fishToCatch = 0;
     int fishCollected = 0;
 
+    /*
+        TO-DO: (not in order)
+        - IMPLEMENT FISH RARITY
+        - IMPLEMENT ADS
+        - IMPLEMENT FISH IMAGES
+     */
+
     private void Awake()
     {
         if (Instance == null)
@@ -44,17 +51,21 @@ public class GameManager : MonoBehaviour
         Debug.Log(fishes[fishToCatch].fishName);
     }
 
-    public void AddFish()
+    public void ModifyFishAmt(int amt)
     {
-        fishCollected += fishes[fishToCatch].fishValue;
+        fishCollected += amt;
     }
-    public void TakeFish(int amt)
-    {
-        fishCollected -= amt;
-    }
-    public int GetFish()
+    public int GetFishAmount()
     {
         return fishCollected;
+    }
+    public FishScriptableObject GetFishObject(int index)
+    {
+        if (index == -1)
+        {
+            return fishes[fishToCatch]; //Get current fish
+        }
+        return fishes[index];
     }
 
     public enum BobberState

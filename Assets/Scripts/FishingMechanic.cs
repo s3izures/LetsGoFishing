@@ -28,8 +28,9 @@ public class FishingMechanic : MonoBehaviour
                 if (fishNibbled)
                 {
                     //Get fish
-                    GameManager.Instance.AddFish();
-                    Debug.Log("Wawa fish");
+                    int amt = GameManager.Instance.GetFishObject(-1).fishValue;
+                    GameManager.Instance.ModifyFishAmt(amt);
+                    UIManager.Instance.ShowCaughtFish();
                     ResetEverything();
                 }
                 else if (waitingForFish)
@@ -58,7 +59,6 @@ public class FishingMechanic : MonoBehaviour
     {
         GameManager.Instance.GetWhichFishType();
         reactionTime = GameManager.Instance.GetReactionTime();
-        Debug.Log("Fish lookin time");
 
         //Bobbing blub blub
         StartCoroutine(WaitingForFishTime());
