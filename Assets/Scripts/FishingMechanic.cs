@@ -20,6 +20,11 @@ public class FishingMechanic : MonoBehaviour
                 waitingForFish = true;
 
                 WaitingForFish();
+
+                if (!GameManager.Instance.GetFishObject(-1).isAd)
+                {
+                    UIManager.Instance.HideAdButton();
+                }
             }
 
             //Check for tap when fish nibbled
@@ -29,8 +34,22 @@ public class FishingMechanic : MonoBehaviour
                 {
                     //Get fish
                     int amt = GameManager.Instance.GetFishObject(-1).fishValue;
+
+                    amt *= BonusRewards.Instance.GetMultipliers();
+
                     GameManager.Instance.ModifyFishAmt(amt);
                     UIManager.Instance.ShowCaughtFish();
+
+                    //Show ads if ads fish
+                    if (GameManager.Instance.GetFishObject(-1).isAd)
+                    {
+                        UIManager.Instance.ShowAdButton();
+                    }
+                    else
+                    {
+                        UIManager.Instance.HideAdButton();
+                    }
+
                     ResetEverything();
                 }
                 else if (waitingForFish)
@@ -53,11 +72,12 @@ public class FishingMechanic : MonoBehaviour
         GameManager.Instance.SwitchRippleAnim(GameManager.Instance.GetActivePond(), (int)GameManager.BobberState.Nothing);
 
         UIManager.Instance.ShowAllPonds();
+        GameManager.Instance.GenerateFish();
     }
 
     void WaitingForFish()
     {
-        GameManager.Instance.GetWhichFishType();
+        
         reactionTime = GameManager.Instance.GetReactionTime();
 
         //Bobbing blub blub

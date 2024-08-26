@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
@@ -9,6 +10,15 @@ public class UIManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI fishAmt;
     [SerializeField] TextMeshProUGUI fishCaught;
     [SerializeField] float alphaPond = 0.1f;
+    [SerializeField] Button shopChest;
+    [SerializeField] CanvasGroup shop;
+    [SerializeField] Animator shopAnim;
+    [SerializeField] Button adButton;
+
+    private void Start()
+    {
+        HideAdButton();
+    }
 
     private void Update()
     {
@@ -27,9 +37,14 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    public int GetPondAmounts()
+    {
+        return ponds.Count;
+    }
     public void ShowOnlyThisPond(int index)
     {
         GameManager.Instance.SetActivePond(index);
+        GameManager.Instance.SetCurrentFish(index);
 
         for (int i = 0; i < ponds.Count; i++)
         {
@@ -44,6 +59,8 @@ public class UIManager : MonoBehaviour
                 ponds[i].alpha = 1f;
             }
         }
+
+        shopChest.interactable = false;
     }
     public void ShowAllPonds()
     {
@@ -54,9 +71,35 @@ public class UIManager : MonoBehaviour
             ponds[i].interactable = true;
             ponds[i].alpha = 1;
         }
+
+        shopChest.interactable = true;
     }
     public void ShowCaughtFish()
     {
-        fishCaught.text = ("You Caught " + GameManager.Instance.GetFishObject(-1).fishName);
+        fishCaught.text = ("You Caught " + GameManager.Instance.GetFishObject(-1).fishName); //Temp
+    }
+
+    public void OpenShop()
+    {
+        shopAnim.Play("OpenShop");
+        shop.interactable = true;
+        shop.blocksRaycasts = true;
+    }
+    public void CloseShop()
+    {
+        shop.interactable = false;
+        shop.blocksRaycasts = false;
+        shopAnim.Play("CloseShop");
+    }
+
+    public void ShowAdButton()
+    {
+        adButton.interactable = true;
+        adButton.gameObject.SetActive(true);
+    }
+    public void HideAdButton()
+    {
+        adButton.interactable = false;
+        adButton.gameObject.SetActive(false);
     }
 }

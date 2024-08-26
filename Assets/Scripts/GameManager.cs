@@ -7,16 +7,10 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
     [SerializeField] List<FishScriptableObject> fishes;
     [SerializeField] List<Animator> rippleAnim;
+    int[] fishTypeInPond = new int[4];
     int pondActive = -1; //means none
     int fishToCatch = 0;
     int fishCollected = 0;
-
-    /*
-        TO-DO: (not in order)
-        - IMPLEMENT FISH RARITY
-        - IMPLEMENT ADS
-        - IMPLEMENT FISH IMAGES
-     */
 
     private void Awake()
     {
@@ -34,6 +28,8 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         GameState.Instance.SetState(1); //temp since we have no main menu
+
+        GenerateFish();
     }
 
     public void SetActivePond(int index)
@@ -45,10 +41,16 @@ public class GameManager : MonoBehaviour
         return pondActive;
     }
 
-    public void GetWhichFishType()
+    public void GenerateFish()
     {
-        fishToCatch = Random.Range(0, fishes.Count);
-        Debug.Log(fishes[fishToCatch].fishName);
+        for (int i = 0; i < UIManager.Instance.GetPondAmounts(); i++)
+        {
+            fishTypeInPond[i] = Random.Range(0, fishes.Count);
+        }
+    }
+    public void SetCurrentFish(int pond)
+    {
+        fishToCatch = fishTypeInPond[pond];
     }
 
     public void ModifyFishAmt(int amt)
