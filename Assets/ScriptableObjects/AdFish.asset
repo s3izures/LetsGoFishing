@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: AdFish
   m_EditorClassIdentifier: 
   fishName: TV Fish
+  fishDesc: A TV shaped fish.  Legend says it gifts anyone who watches its ads...
+    Personally I think that's stupid.
   fishValue: 2
+  fishImage: {fileID: 0}
   bobberChance:
   - 30
   - 40

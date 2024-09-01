@@ -5,12 +5,13 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
-    [SerializeField] List<FishScriptableObject> fishes;
+    [SerializeField] List<FishObject> fishes;
     [SerializeField] List<Animator> rippleAnim;
     int[] fishTypeInPond = new int[4];
     int pondActive = -1; //means none
     int fishToCatch = 0;
-    int fishCollected = 0;
+    [SerializeField] int fishCollected = 0;
+    List<ShopItem> inventory = new List<ShopItem> { };
 
     private void Awake()
     {
@@ -61,7 +62,7 @@ public class GameManager : MonoBehaviour
     {
         return fishCollected;
     }
-    public FishScriptableObject GetFishObject(int index)
+    public FishObject GetFishObject(int index)
     {
         if (index == -1)
         {
@@ -88,5 +89,17 @@ public class GameManager : MonoBehaviour
     public float GetReactionTime()
     {
         return fishes[fishToCatch].reactionTime;
+    }
+    public void AddFishToRoster(FishObject fish)
+    {
+        fishes.Add(fish);
+    }
+    public void AddToInventory(ShopItem item)
+    {
+        inventory.Add(item);
+    }
+    public List<ShopItem> GetInventory()
+    {
+        return inventory;
     }
 }

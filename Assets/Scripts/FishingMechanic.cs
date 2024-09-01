@@ -35,7 +35,29 @@ public class FishingMechanic : MonoBehaviour
                     //Get fish
                     int amt = GameManager.Instance.GetFishObject(-1).fishValue;
 
+
+                    //Item bonus
+                    if (GameManager.Instance.GetInventory().Count > 0)
+                    {
+                        foreach (ShopItem item in GameManager.Instance.GetInventory())
+                        {
+                            if (item.isFishBonus)
+                            {
+                                amt += item.fishBonus;
+                            }
+                            if (item.isFishMultiplier)
+                            {
+                                amt *= item.fishMultiplier;
+                            }
+                            if (item.isUnlockFish)
+                            {
+                                GameManager.Instance.AddFishToRoster(item.unlockFish);
+                            }
+                        }
+                    }
+                    //AD bonus
                     amt *= BonusRewards.Instance.GetMultipliers();
+
 
                     GameManager.Instance.ModifyFishAmt(amt);
                     UIManager.Instance.ShowCaughtFish();

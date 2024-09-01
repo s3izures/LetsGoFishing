@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,11 +9,15 @@ public class UIManager : MonoBehaviour
     public static UIManager Instance;
     [SerializeField] List<CanvasGroup> ponds;
     [SerializeField] TextMeshProUGUI fishAmt;
-    [SerializeField] TextMeshProUGUI fishCaught;
+    [SerializeField] TextMeshProUGUI fishCaughtText;
+    [SerializeField] TextMeshProUGUI fishCaughtValueText;
+    [SerializeField] TextMeshProUGUI fishDescription;
+    [SerializeField] Image fishCaughtImage;
     [SerializeField] float alphaPond = 0.1f;
     [SerializeField] Button shopChest;
     [SerializeField] CanvasGroup shop;
     [SerializeField] Animator shopAnim;
+    [SerializeField] Animator fishCaughtAnim;
     [SerializeField] Button adButton;
 
     private void Start()
@@ -76,7 +81,11 @@ public class UIManager : MonoBehaviour
     }
     public void ShowCaughtFish()
     {
-        fishCaught.text = ("You Caught " + GameManager.Instance.GetFishObject(-1).fishName); //Temp
+        fishCaughtText.text = GameManager.Instance.GetFishObject(-1).fishName;
+        fishDescription.text = GameManager.Instance.GetFishObject(-1).fishDesc;
+        fishCaughtValueText.text = "+ " + GameManager.Instance.GetFishObject(-1).fishValue.ToString() + "fish point(s)";
+        fishCaughtImage.sprite = GameManager.Instance.GetFishObject(-1).fishImage;
+        fishCaughtAnim.Play("FishCaughtReveal");
     }
 
     public void OpenShop()
