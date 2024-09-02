@@ -16,7 +16,7 @@ MonoBehaviour:
   fishDesc: A TV shaped fish.  Legend says it gifts anyone who watches its ads...
     Personally I think that's stupid.
   fishValue: 2
-  fishImage: {fileID: 0}
+  fishImage: {fileID: 21300000, guid: 261345a8b879fcd47a70292fbbbf9272, type: 3}
   bobberChance:
   - 30
   - 40

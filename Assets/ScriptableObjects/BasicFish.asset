@@ -15,7 +15,7 @@ MonoBehaviour:
   fishName: Normal Fish
   fishDesc: Just a regular fish.  Yummy!
   fishValue: 1
-  fishImage: {fileID: 21300000, guid: 88867770d04a37f418a42f4669149b73, type: 3}
+  fishImage: {fileID: 21300000, guid: 76b94e6620da104418a0b765ca636db5, type: 3}
   bobberChance:
   - 10
   - 30

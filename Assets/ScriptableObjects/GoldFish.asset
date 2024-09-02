@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: GoldFish
   m_EditorClassIdentifier: 
   fishName: Golden Carp
+  fishDesc: 
   fishValue: 5
+  fishImage: {fileID: 21300000, guid: a48a26b43a1decd48843c4957609dc6d, type: 3}
   bobberChance:
   - 20
   - 30
