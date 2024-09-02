@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Cruddy Fishing Rod
   itemValue: 2
-  itemImage: {fileID: 0}
+  itemImage: {fileID: 21300000, guid: 8e81b3864b748e6439bfdcadf3ee081c, type: 3}
   itemDesc: Get 5 extra fish with every successful catch.
   oneTimePurchase: 0
   upgradeable: 1

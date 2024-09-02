@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Fancy Fishing Rod
   itemValue: 100
-  itemImage: {fileID: 0}
+  itemImage: {fileID: 21300000, guid: fa02619f607c6c14783b63531c4ce881, type: 3}
   itemDesc: Get 20 extra fish with every successful catch.
   oneTimePurchase: 1
   upgradeable: 0

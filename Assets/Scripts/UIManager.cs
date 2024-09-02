@@ -83,7 +83,7 @@ public class UIManager : MonoBehaviour
     {
         fishCaughtText.text = GameManager.Instance.GetFishObject(-1).fishName;
         fishDescription.text = GameManager.Instance.GetFishObject(-1).fishDesc;
-        fishCaughtValueText.text = "+ " + GameManager.Instance.GetFishObject(-1).fishValue.ToString() + "fish point(s)";
+        fishCaughtValueText.text = "+ " + GameManager.Instance.GetFishObject(-1).fishValue.ToString() + " fish point(s)";
         fishCaughtImage.sprite = GameManager.Instance.GetFishObject(-1).fishImage;
         fishCaughtAnim.Play("FishCaughtReveal");
     }
