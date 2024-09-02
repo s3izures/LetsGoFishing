@@ -49,6 +49,10 @@ public class ItemDisplay : MonoBehaviour
                 }
                 upgradableId = GameManager.Instance.GetInventory().IndexOf(item);
             }
+            if (item.isUnlockFish)
+            {
+                GameManager.Instance.AddFishToRoster(item.unlockFish);
+            }
         }
 
         if (item.oneTimePurchase)
